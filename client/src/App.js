@@ -6,10 +6,29 @@ import {
   useLocation
 } from 'react-router-dom';
 
+import Home from "./scenes/home/Home"
+
+const ScrollToTop = () => {
+  const {pathName} = useLocation(); 
+
+  useEffect(()=> {
+    window.scrollTo(0,0);
+  }, [pathName])
+
+  return null;
+}
+
+
+
 function App() {
   return (
     <div className="app">
-      
+      <BrowserRouter>
+        <ScrollToTop/>
+          <Routes>
+            <Route path="/" element={<Home />}></Route>
+          </Routes>
+      </BrowserRouter>
     </div>
   );
 }
