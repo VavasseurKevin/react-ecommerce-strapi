@@ -38,7 +38,7 @@ export const cartSlice = createSlice({
     },
 
     // décrémenter le compteur d'un article spécifique dans le panier
-    decreaseCount: (state, action) => {
+    descreaseCount: (state, action) => {
       state.cart = state.cart.map((item) => {
         if (item.id === action.payload.id && item.count > 1) {
           item.count--;
@@ -59,7 +59,7 @@ export const {
     addToCart,
     removeFromCart,
     increaseCount,
-    decreaseCount,
+    descreaseCount,
     setIsCartOpen,
 } = cartSlice.actions;
 
