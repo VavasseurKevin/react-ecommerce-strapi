@@ -6,6 +6,8 @@ const initialState = {
   items: [],
 };
 
+
+
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -20,7 +22,7 @@ export const cartSlice = createSlice({
       state.cart = [...state.cart, action.payload.item];
     },
 
-    // etirer un élément du panier
+    // retirer un élément du panier
     removeFromCart: (state, action) => {
       state.cart = state.cart.filter((item) => item.id !== action.payload.id);
     },
@@ -46,7 +48,7 @@ export const cartSlice = createSlice({
     },
 
     // asculer l'état d'ouverture du panier entre ouvert et fermé
-    setisCartOpen: (state) => {
+    setIsCartOpen: (state) => {
         state.isCartOpen = ! state.isCartOpen;
     }
   },
@@ -58,7 +60,7 @@ export const {
     removeFromCart,
     increaseCount,
     decreaseCount,
-    setisCartOpen,
+    setIsCartOpen,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
