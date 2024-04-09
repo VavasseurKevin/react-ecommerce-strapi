@@ -33,7 +33,7 @@ const Subscribe = () => {
                 orientation="vertical"
                 />
             <Typography
-                sx={{p:"10px", "hover": {cursor:"pointer"}}}
+                sx={{p:"10px", ":hover": {cursor:"pointer"}}}
             >
                 Subscribe
             </Typography>
