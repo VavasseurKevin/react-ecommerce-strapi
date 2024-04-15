@@ -47,11 +47,11 @@ const CartMenu = () => {
         position="fixed"
         right="0"
         bottom="0"
-        width="max(400px, 30%)"
+        width="max(600px, 30%)"
         height="100%"
         backgroundColor="white"
       >
-        <Box>
+        <Box padding="30px" overflow="auto" height="100%">
           {/* HEADER */}
           <Flexbox>
             <Typography variant="h3">SHOPING BAG({cart.length})</Typography>
@@ -71,8 +71,8 @@ const CartMenu = () => {
                       alt={item?.name}
                       width="123px"
                       height="164px"
-                      src={`http://localhost:1337/${item?.attributes?.image?.data?.attributes?.formats?.medium?.url}`}
-                    />
+                      src={`http://localhost:1337${item?.attributes?.image?.data?.attributes?.formats?.medium?.url}`}
+                      />
                   </Box>
                   <Box flex="1 1 60%">
                     <Flexbox mb="5px">
