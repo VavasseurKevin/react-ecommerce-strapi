@@ -32,12 +32,27 @@ const ItemDetails = () => {
     );
     const itemJson = await item.json();
     setItem(itemJson.data);
+
+    console.log(itemJson.data);
   }
 
+  async function getItems() {
+    const items = await fetch(
+      `http://localhost:1337/api/items?populate=image`,
+      {
+        method: "GET",
+      }
+    );
+    const itemsJson = await items.json();
+    setItems(itemsJson.data);
+
+    console.log(itemsJson.data);
+  }
   
 
   useEffect(() => {
     getItem();
+    getItems();
     
   }, [itemId]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -66,7 +81,7 @@ const ItemDetails = () => {
             <Typography variant="h3">{item?.attributes?.name}</Typography>
             <Typography>${item?.attributes?.price}</Typography>
             <Typography sx={{ mt: "20px" }}>
-             
+             {item?.attributes?.longDescription[0].children[0].text}
             </Typography>
           </Box>
 
