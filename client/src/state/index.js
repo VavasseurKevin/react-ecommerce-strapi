@@ -20,7 +20,10 @@ export const cartSlice = createSlice({
     // ajouter un nouvel article au panier sans remplacer les articles existants
     addToCart: (state, action) => {
       state.cart = [...state.cart, action.payload.item];
+   
     },
+
+    
 
     // retirer un élément du panier
     removeFromCart: (state, action) => {

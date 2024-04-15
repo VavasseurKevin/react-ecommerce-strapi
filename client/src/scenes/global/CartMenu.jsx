@@ -89,7 +89,7 @@ const CartMenu = () => {
                       </IconButton>
                     </Flexbox>
 
-                    <Typography>{item.attributes.shortDescription}</Typography>
+                    <Typography>{item.attributes.shortDescription[0].children[0].text}</Typography>
                     <Flexbox m="15px 0">
                       <Box
                         display="flex"

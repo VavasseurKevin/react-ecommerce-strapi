@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Badge, Box, IconButton } from '@mui/material';
+import { Badge, Box, IconButton, Typography } from '@mui/material';
 import { setIsCartOpen } from '../../state';
 
 import {
