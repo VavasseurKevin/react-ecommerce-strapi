@@ -15,6 +15,7 @@ import CartMenu from "./scenes/global/CartMenu";
 import Footer from "./scenes/global/Footer";
 
 
+
 const ScrollToTop = () => {
   const {pathName} = useLocation(); 
 
