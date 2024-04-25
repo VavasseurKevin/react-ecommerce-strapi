@@ -6,7 +6,11 @@ import { shades } from "../../theme";
 import Payment from "./Payment";
 import Shipping from "./Shipping";
 import * as yup from "yup";
+import { loadStripe } from "@stripe/stripe-js";
 
+const stripePromise = loadStripe(
+  "pk_test_51NUWJFJhU9OOjQ5nFBBjvIEbe1bhSp3SyVZtXzQrOiJdXuU5WSbqGLeoxikuwhN9u28bpbAZk2hdjr8mtudKJyIG004BPoffgI"
+);
 
 
 const Checkout = () => {
