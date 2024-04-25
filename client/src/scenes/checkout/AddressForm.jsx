@@ -13,17 +13,16 @@ const AddressForm = ({
 }) => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
-  // dynamiquement des noms de champs en ajoutant un préfixe spécifique
+  // these functions allow for better code readability
   const formattedName = (field) => `${type}.${field}`;
 
-  // vérifier si un champ spécifique a été touché et s'il a une erreur associée dans un formulaire.
   const formattedError = (field) =>
     Boolean(
       getIn(touched, formattedName(field)) &&
         getIn(errors, formattedName(field))
     );
 
-    const formattedHelper = (field) =>
+  const formattedHelper = (field) =>
     getIn(touched, formattedName(field)) && getIn(errors, formattedName(field));
 
   return (
@@ -43,9 +42,21 @@ const AddressForm = ({
         onChange={handleChange}
         value={values.firstName}
         name={formattedName("firstName")}
-        error={formattedName("firstName")}
+        error={formattedError("firstName")}
         helperText={formattedHelper("firstName")}
-        sx = {{gridColumn: "span 2"}}
+        sx={{ gridColumn: "span 2" }}
+      />
+      <TextField
+        fullWidth
+        type="text"
+        label="Last Name"
+        onBlur={handleBlur}
+        onChange={handleChange}
+        value={values.lastName}
+        name={formattedName("lastName")}
+        error={formattedError("lastName")}
+        helperText={formattedHelper("lastName")}
+        sx={{ gridColumn: "span 2" }}
       />
       <TextField
         fullWidth
@@ -122,4 +133,5 @@ const AddressForm = ({
     </Box>
   );
 };
+
 export default AddressForm;
