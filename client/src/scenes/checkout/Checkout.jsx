@@ -2,10 +2,10 @@ import { useSelector } from "react-redux";
 import { Box, Button, Stepper, Step, StepLabel } from "@mui/material";
 import { Formik } from "formik";
 import { useState } from "react";
+import * as yup from "yup";
 import { shades } from "../../theme";
 import Payment from "./Payment";
 import Shipping from "./Shipping";
-import * as yup from "yup";
 import { loadStripe } from "@stripe/stripe-js";
 
 const stripePromise = loadStripe(
@@ -32,6 +32,7 @@ const Checkout = () => {
 
     if(isSecondStep) {
       makePayment(values);
+  
     }
 
     actions.setTouched({});
@@ -39,21 +40,26 @@ const Checkout = () => {
 
   async function makePayment(values) {
     const stripe = await stripePromise;
+
     const requestBody = {
-      userName : [values.firstName, values.lastName].join(" "),
+      userName: [values.firstName, values.lastName].join(" "),
       email: values.email,
-      products: cart.map(({ id, count}) => ({
+      products: cart.map(({ id, count }) => ({
         id,
         count,
       })),
     };
 
+    console.log (requestBody);
+    
     const response = await fetch("http://localhost:1337/api/orders", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(requestBody),
     });
-    
+
+    console.log(response);
+
     const session = await response.json();
     await stripe.redirectToCheckout({
       sessionId: session.id,
